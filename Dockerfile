@@ -10,6 +10,4 @@ RUN mkdir -p /etc/karma
 
 EXPOSE 8080
 
-ENTRYPOINT ["/bin/sh", "-c"]
-
-CMD ["/bin/karma"]
+ENTRYPOINT ["/bin/karma"]
