@@ -15,3 +15,10 @@ Minimal repository that follows the very useful web dashboard
 
 **Get the image on 
 [Dockerhub](https://hub.docker.com/r/trallnag/prymitive-karma-debian)**
+
+## Differences
+
+* Bin placed within Debian Buster. This means shell and all that is included. 
+	Decreases security in comparison to distroless.
+* Binary is at `/bin/karma`.
+* Dir `/etc/karma` created.
