@@ -21,6 +21,7 @@ jobs:
         run: |
           extract=$(jq -r '.tag_name' <(cat release.json))
           echo "{ \"version\" : \"${extract}\" }" > version.json
+          echo "VERSION=$version" >> $GITHUB_ENV
 
       - name: Recommit
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -29,19 +30,6 @@ jobs:
           file_pattern: ./version.json
           commit_user_name: My GitHub Actions Bot
           commit_user_email: tim.and.trallnag+code@gmail.com
-
-  build:
-    needs: update
-    runs-on: ubuntu-latest
-    steps:
-
-      - name: Checkout repositry
-        uses: actions/checkout@v2
-
-      - name: Retrieve version
-        run: |
-          version=$(jq -r '.version' <(cat version.json))
-          echo "VERSION=$version" >> $GITHUB_ENV
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
