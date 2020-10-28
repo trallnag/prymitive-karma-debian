@@ -21,7 +21,7 @@ jobs:
         run: |
           extract=$(jq -r '.tag_name' <(cat release.json))
           echo "{ \"version\" : \"${extract}\" }" > version.json
-          echo "VERSION=$version" >> $GITHUB_ENV
+          echo "VERSION=$extract" >> $GITHUB_ENV
 
       - name: Recommit
         uses: stefanzweifel/git-auto-commit-action@v4
